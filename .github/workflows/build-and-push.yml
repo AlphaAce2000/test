@@ -10,6 +10,11 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      - name: Grant Docker access
+        run: |
+              sudo chmod 666 /var/run/docker.sock
+              sudo usermod -aG docker $USER
+
 
       - name: Build Docker image
         uses: docker/build-push-action@v2
