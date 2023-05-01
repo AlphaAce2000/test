@@ -23,4 +23,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: abhishek3992/test:${GITHUB_REF#refs/heads/}-${{ github.run_number }}
+          tags: abhishek3992/test:$(echo "${{ github.ref }}" | sed 's/refs\/heads\///' | sed 's/\//-/g')-${{ github.run_number }}
