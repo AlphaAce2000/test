@@ -10,11 +10,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Grant Docker access
-        run: |
-              sudo chmod 666 /var/run/docker.sock
-              sudo usermod -aG docker $USER
-
+      
 
       - name: Build Docker image
         uses: docker/build-push-action@v2
@@ -24,5 +20,6 @@ jobs:
           push: true
           tags: abhishek3992/test:${{ github.sha }}
         env:
+          DOCKER_BUILDKIT: 1
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
