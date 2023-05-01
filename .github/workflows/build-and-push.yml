@@ -23,4 +23,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: abhishek3992/test:{{ github.ref.replace('refs/heads/', '') }}-{{ github.run_number }}
+          tags: abhishek3992/test:main-{{ github.run_number }}
