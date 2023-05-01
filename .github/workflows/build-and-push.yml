@@ -23,4 +23,4 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: abhishek3992/test:${{ github.sha }}
+          tags: abhishek3992/test:${{ format('{0}-{1}', replace(github.ref, 'refs/heads/', ''), github.run_number) }}
