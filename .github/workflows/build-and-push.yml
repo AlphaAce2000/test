@@ -1,8 +1,15 @@
 name: Build and Push Docker Image
 on:
-  push:
-    branches:
-      - main
+  workflow_dispatch:
+    inputs:
+      action:
+        description: 'Select an action'
+        required: true
+        default: 'Option 1'
+        options:
+          - 'Option 1'
+          - 'Option 2'
+          - 'Option 3'
 
 jobs:
   build-and-push:
