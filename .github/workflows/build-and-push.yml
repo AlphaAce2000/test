@@ -31,7 +31,7 @@ jobs:
         run: |
               docker buildx build --progress plain \
                 --platform linux/amd64,linux/arm64 \
-                --tag myapp:build \
-                --tag myapp2:build \
+                --tag abhishek3992/myapp:build \
+                --tag abhishek3992/myapp2:build \
                 --push \
                 -f ./Dockerfile .
