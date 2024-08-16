@@ -24,7 +24,7 @@ jobs:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
       - name: Login to ghcr
-        run: echo ${{ secrets.DOCKER_PASS }} | docker login ghcr.io -u USERNAME --password-stdin
+        run: echo ${{ secrets.DOCKER_PASS }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
       - name: Create a new Buildx builder
         run: |
           docker buildx create --name mybuilder --use
@@ -34,6 +34,6 @@ jobs:
               docker buildx build --progress plain \
                 --platform linux/amd64,linux/arm64 \
                 --tag abhishek3992/myapp:build \
-                --tag ghcr.io/AlphaAce2000/myapp:build \
+                --tag ghcr.io/${{ github.actor }}/myapp:build \
                 --push \
                 -f ./Dockerfile .
