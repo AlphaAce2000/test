@@ -26,9 +26,11 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build -t myapp:v1.0 . \
-            -f ./Dockerfile .
+              docker buildx build \
+                --progress plain \
+                --platform linux/amd64,linux/arm64 \
+                --tag myapp:build \
+                -f ./Dockerfile .
       - name: push
         run: |
-              docker tag myapp:v1.0 abhishek3992/myapp:v1.2
-              docker push abhishek3992/myapp:v1.2
+              docker push abhishek3992/myapp:build
