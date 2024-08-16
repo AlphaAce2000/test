@@ -34,6 +34,6 @@ jobs:
               docker buildx build --progress plain \
                 --platform linux/amd64,linux/arm64 \
                 --tag abhishek3992/myapp:build \
-                --tag ghcr.io/${{ github.actor }}/myapp:build \
+                --tag ghcr.io/alphaace2000/myapp:build \
                 --push \
                 -f ./Dockerfile .
