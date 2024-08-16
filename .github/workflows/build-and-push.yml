@@ -23,7 +23,10 @@ jobs:
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
-
+      - name: Create a new Buildx builder
+        run: |
+          docker buildx create --name mybuilder --use
+          docker buildx inspect mybuilder --bootstrap
       - name: Build Docker image
         run: |
               docker buildx build \
