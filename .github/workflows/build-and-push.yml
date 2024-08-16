@@ -29,13 +29,9 @@ jobs:
           docker buildx inspect mybuilder --bootstrap
       - name: Build Docker image
         run: |
-              docker buildx build \
-                --progress plain \
+              docker buildx build --progress plain \
                 --platform linux/amd64,linux/arm64 \
                 --tag myapp:build \
+                --tag myapp2:build \
+                --push \
                 -f ./Dockerfile .
-      - name: List Docker images
-        run: docker images
-      - name: push
-        run: |
-              docker push abhishek3992/myapp:build
