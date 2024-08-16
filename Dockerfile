@@ -1,7 +1,3 @@
-FROM alpine:latest
-LABEL maintainer="abhishek agarwal abhishek.agarwal@synergymachines.us"
+FROM ubuntu:latest
 
-RUN apk --no-cache add curl
-
-ENTRYPOINT ["curl"]
-CMD ["-V"]
+RUN echo"hi"
